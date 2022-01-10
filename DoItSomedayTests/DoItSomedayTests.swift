@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import DoItSomeday
-
+// swiftlint:disable overridden_super_call
 class DoItSomedayTests: XCTestCase {
 
     override func setUpWithError() throws {}
@@ -21,3 +21,4 @@ class DoItSomedayTests: XCTestCase {
     }
 
 }
+// swiftlint:enable overridden_super_call

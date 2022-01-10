@@ -14,8 +14,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: MainListNode())
+        window?.rootViewController = UINavigationController(rootViewController: MainContainer())
         window?.makeKeyAndVisible()
+        
+        if getTODOCount() <= 0 {
+            var dayComponent = DateComponents()
+            for i in 1 ... 100 {
+                dayComponent.day = i
+                if let nextDate = Calendar.current.date(byAdding: dayComponent, to: Date()) {
+                    makeTODO(title: "TEST\(i)", message: "TEST\(i) Message", dday: nextDate)
+                }
+            }
+        }
+        
         
         return true
     }
